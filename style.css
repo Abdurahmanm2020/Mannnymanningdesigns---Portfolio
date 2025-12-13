@@ -1,0 +1,2398 @@
+/* ======================== GLOBAL STYLES & FONT-FACE ======================== */
+:root {
+  /* Define colors as CSS variables for easy changes */
+  --color-black: #171717;
+  --color-white: #eeeeee;
+  --color-blue: #7ABEE1;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif; /* A general fallback */
+  background-color: var(--color-black);
+  color: var(--color-white);
+  overflow-x: hidden; /* Prevent horizontal scrollbars */
+  line-height: 1.2; /* Better readability */
+}
+
+.hidden-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show-scroll {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@import url(https://db.onlinewebfonts.com/c/1e400e1a7a0ff1e8abbdddf2e42beff1?family=FSP+DEMO+-+Integral+CF+Heavy);
+
+@font-face {
+    font-family: "FSP DEMO - Integral CF Heavy";
+    src: url("https://db.onlinewebfonts.com/t/1e400e1a7a0ff1e8abbdddf2e42beff1.eot");
+    src: url("https://db.onlinewebfonts.com/t/1e400e1a7a0ff1e8abbdddf2e42beff1.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/1e400e1a7a0ff1e8abbdddf2e42beff1.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/1e400e1a7a0ff1e8abbdddf2e42beff1.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/1e400e1a7a0ff1e8abbdddf2e42beff1.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/1e400e1a7a0ff1e8abbdddf2e42beff1.svg#FSP DEMO - Integral CF Heavy")format("svg");
+}
+
+/* FSP DEMO - Integral CF Heavy font-face (if using local files) */
+/*
+@font-face {
+  font-family: 'FSP DEMO - Integral CF Heavy';
+  src: url('path/to/IntegralCF-Heavy.woff2') format('woff2'),
+       url('path/to/IntegralCF-Heavy.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+*/
+
+
+
+/* Disable body scroll when navigation is open */
+body.no-scroll {
+  overflow: hidden;
+}
+
+
+/* ================== MASTER BUTTON STYLE ================== */
+
+/* 1. The Button Container */
+.mmd-master-btn {
+  /* Your requested styles */
+  background-color: #7ABEE1 !important; /* Blue */
+  color: #171717 !important; /* Black */
+  text-decoration: none !important;
+  font-family: "FSP DEMO - Integral CF Heavy", sans-serif !important;
+  font-size: 0.9em !important;
+  padding: 16px 32px !important;
+  border-radius: 8px 24px !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease !important;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: none; /* Remove default borders if used on <button> tags */
+  cursor: pointer;
+}
+
+/* 2. Hover State (Background turns White) */
+.mmd-master-btn:hover {
+  background-color: #eeeeee !important;
+}
+
+/* 3. The Arrow Image Styling */
+/* This ensures the arrow sits correctly inside the button */
+.mmd-master-btn .mmd-btn-arrow {
+  height: 12px; 
+  width: auto;
+  position: relative;
+  display: block;
+  transition: transform 0.05s ease-out; /* Super fast reset */
+}
+
+/* 4. The Animation Keyframes (Shooting effect) */
+@keyframes mmdArrowShoot {
+  0% { transform: translateX(0px); }
+  50% { transform: translateX(10px); } /* Shoot out right */
+  51% { opacity: 0; } /* Hide */
+  52% { transform: translateX(-10px); opacity: 0; } /* Teleport to left */
+  53% { opacity: 1; } /* Reappear */
+  100% { transform: translateX(0px); } /* Slide back to center */
+}
+
+/* 5. The Trigger Class (Added by Javascript) */
+.animate-arrow-forward {
+  animation: mmdArrowShoot 0.4s forwards;
+}
+
+
+
+/* ======================== HEADER STYLING ======================== */
+.mmd-header-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background-color: var(--color-black)
+#171717;
+    box-shadow: 0 16px 13px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.mmd-header-logo-link {
+  display: block;
+  flex-shrink: 0; /* Prevent logo from shrinking */
+}
+
+.mmd-header-logo-img {
+  height: 50px;
+  width: auto;
+}
+
+
+.mmd-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Space between button and hamburger */
+  flex-shrink: 0; /* Prevent this entire control group from shrinking */
+  justify-content: flex-end; /* Ensure items within this group stick to the right */
+}
+
+/* "REACH OUT" Button */
+.mmd-reach-out-btn {
+  background-color: var(--color-blue);
+  color: var(--color-black);
+  text-decoration: none;
+  font-family: "FSP DEMO - Integral CF Heavy";
+  font-size: 0.9em;
+  padding: 16px 32px;
+  border-radius: 8px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+  white-space: nowrap; /* Prevent text wrapping */
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.mmd-reach-out-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+.mmd-btn-arrow {
+  height: 12px;
+  width: auto;
+  position: relative;
+  transition: transform 0.05s ease-out;
+}
+
+/* Button Hover Animation */
+.mmd-reach-out-btn:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+.mmd-reach-out-btn .mmd-btn-arrow.animate-arrow-forward {
+  animation: mmdArrowShoot 0.3s forwards;
+}
+
+/* No change to @keyframes mmdArrowShoot */
+
+
+/* Hamburger Menu */
+.mmd-hamburger-menu {
+  width: 30px;
+  height: 18px; /* Height for the overall hamburger area */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1010;
+  flex-shrink: 0; /* Prevent hamburger from shrinking */
+}
+
+.mmd-hamburger-menu::before,
+.mmd-hamburger-menu::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px; /* Height of each bar */
+  background-color: var(--color-white);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.mmd-hamburger-menu::before {
+  top: 0; /* Position top bar */
+}
+
+.mmd-hamburger-menu::after {
+  bottom: 0; /* Position bottom bar */
+}
+
+/* Hamburger to Cross Animation */
+.mmd-hamburger-menu.is-active::before {
+  transform: translateY(7.5px) rotate(45deg); /* Adjust translateY based on height/2 */
+}
+
+.mmd-hamburger-menu.is-active::after {
+  transform: translateY(-7.5px) rotate(-45deg); /* Adjust translateY based on height/2 */
+}
+
+
+/* ======================== NAVIGATION OVERLAY (BLUR STYLE) ======================== */
+
+.mmd-fullscreen-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  
+  /* Modern Dark Blur Background */
+  background-color: rgba(30, 35, 40, 0.9); /* Dark grey with transparency */
+  backdrop-filter: blur(15px); /* The Blur Effect */
+  -webkit-backdrop-filter: blur(15px); /* Safari support */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  /* Hidden State */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s;
+  
+  /* Layering: 
+     998 = Below Header (1000) 
+     but Above Page Content */
+  z-index: 998; 
+}
+
+/* Open State */
+.mmd-fullscreen-nav.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Navigation Links List */
+.mmd-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Space between words */
+}
+
+/* Individual Link Styling */
+.mmd-nav-item {
+  font-family: "FSP DEMO - Integral CF Heavy", sans-serif;
+  font-size: 3.5em; /* Large text */
+  color: var(--color-white);
+  text-decoration: none;
+  letter-spacing: 4px; /* Wide spacing like Figma */
+  text-transform: uppercase;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+/* Hover Effect */
+.mmd-nav-item:hover {
+  color: #7ABEE1; /* Blue on hover */
+  letter-spacing: 6px; /* Expands slightly */
+}
+
+/* Footer Section (Email at bottom left) */
+.mmd-nav-footer {
+  position: absolute;
+  bottom: 40px;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mmd-nav-icon {
+  width: 24px;
+  height: auto;
+  filter: invert(1); /* Turns black icon to white if needed */
+}
+
+.mmd-nav-email-text {
+  font-family: 'Think', sans-serif; /* Using your custom font */
+  font-size: 1.2em;
+  color: var(--color-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .mmd-nav-item {
+    font-size: 2.5em; /* Smaller on phone */
+  }
+  .mmd-nav-footer {
+    left: 20px;
+    bottom: 30px;
+  }
+  .mmd-nav-email-text {
+    font-size: 0.9em;
+  }
+}
+
+
+/* Make Header Background Transparent when Menu is Open */
+.mmd-header-main.nav-active {
+  background-color: transparent !important;
+  box-shadow: none;
+}
+
+
+/* ======================== HERO SECTION STYLING ======================== */
+.mmd-hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 80px; /* Account for fixed header height */
+  overflow: hidden;
+  background-color: var(--color-black); /* Ensure black background */
+}
+
+/* --- Interactive Background Image --- */
+.mmd-hero-bg-lines {
+  position: absolute;
+  top: -5%;  /* Start slightly off-screen */
+  left: -5%; /* Start slightly off-screen */
+  width: 110%; /* Make it bigger than the screen so we can move it */
+  height: 110%;
+  object-fit: cover;
+  z-index: 1; 
+  opacity: 0.5; /* Good visibility without hiding text */
+  
+  /* Constant "Breathing" Animation */
+  animation: mmdBreathing 6s ease-in-out infinite alternate;
+  
+  /* Smoothness for the JS mouse movement */
+  transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  /* Only receive mouse events on the section, not the image itself */
+  pointer-events: none; 
+}
+
+@keyframes mmdBreathing {
+  0% { opacity: 0.4; transform: scale(1); }
+  100% { opacity: 0.6; transform: scale(1.02); }
+}
+
+.mmd-hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.mmd-hero-brand-name {
+  font-family: "FSP DEMO - Integral CF Heavy";
+  font-size: 1.2em; /* Adjusted size */
+  color: var(--color-white);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.mmd-hero-decorative-lines {
+    width: 200px;
+    height: auto;
+    margin-bottom: 0px;
+}
+
+.mmd-hero-title {
+    font-family: "FSP DEMO - Integral CF Heavy";
+    font-size: 4.5em;
+    line-height: 1.1;
+    margin-bottom: -16px;
+    text-transform: uppercase;
+    color: var(--color-white)#eeeeee;
+}
+
+.mmd-hero-name-highlight {
+  color: var(--color-blue);
+}
+
+.mmd-hero-subtitle {
+  font-family: "FSP DEMO - Integral CF Heavy";
+  font-size: 2.8em; /* Larger subtitle text */
+  text-transform: uppercase;
+  display: flex;
+  align-items: center; /* Vertically align items */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px; /* Space between words */
+  margin-top: 40px;
+  margin-bottom: 120px; /* Space above scroll down button */
+  color: var(--color-white);
+}
+
+/* Dynamic Text Wrapper for the UI/UX border */
+.mmd-dynamic-text-border {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border: 6px dashed var(--color-white);
+    color: var(--color-white);
+    font-family: 'Think', sans-serif;
+    font-size: 5rem;
+    min-width: 190px;
+    height: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Cursor for typing effect */
+.mmd-dynamic-text::after {
+  content: '|';
+  display: inline-block;
+  animation: mmdBlinkCaret 0.75s step-end infinite;
+  color: var(--color-blue);
+  margin-left: 3px; /* Space between text and cursor */
+}
+
+@keyframes mmdBlinkCaret {
+  from, to { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+
+/* Scroll Down Button (Image) */
+.mmd-scroll-down-btn {
+  position: absolute;
+  bottom: 40px; /* Adjusted position */
+  left: 50%;
+  transform: translateX(-50%);
+  display: block; /* Make it a block for proper centering */
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.mmd-scroll-down-btn:hover {
+  transform: translateX(-50%) translateY(-5px); /* Slight lift on hover */
+}
+
+.mmd-scroll-down-img {
+    width: 100px;
+    height: auto;
+    animation: mmdBounceScroll 1.8s infinite;
+}
+
+@keyframes mmdBounceScroll {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-12px); }
+  60% { transform: translateY(-6px); }
+}
+
+/* ======================== RESPONSIVE DESIGN (REVISED) ======================== */
+@media (max-width: 1200px) {
+  .mmd-hero-title {
+    font-size: 3.8em;
+  }
+  .mmd-hero-subtitle {
+    font-size: 2.2em;
+    gap: 10px;
+  }
+  .mmd-dynamic-text-border {
+    min-width: 160px;
+    padding: 8px 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .mmd-header-main {
+    padding: 20px 3%; /* Keep consistent padding */
+  }
+  .mmd-header-logo-img {
+    height: 45px;
+  }
+  .mmd-header-controls {
+    gap: 20px;
+  }
+  .mmd-reach-out-btn {
+    padding: 10px 20px;
+    font-size: 0.85em;
+    gap: 8px;
+  }
+  .mmd-btn-arrow {
+    height: 10px;
+  }
+  .mmd-nav-links .mmd-nav-item {
+    font-size: 2.5em;
+  }
+  .mmd-hero-title {
+    font-size: 3.2em;
+    margin-bottom: 20px;
+  }
+  .mmd-hero-subtitle {
+    font-size: 1.8em;
+    gap: 8px;
+  }
+  .mmd-dynamic-text-border {
+    min-width: 140px;
+    padding: 7px 12px;
+  }
+  .mmd-hero-decorative-lines {
+    width: 150px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mmd-header-main {
+    padding: 15px 3%; /* Keep consistent padding */
+  }
+  .mmd-header-logo-img {
+    height: 40px;
+  }
+  .mmd-reach-out-btn {
+    padding: 8px 18px;
+    font-size: 0.8em;
+  }
+  /* Hamburger dimensions for smaller screens */
+  .mmd-hamburger-menu {
+    width: 28px;
+    height: 16px;
+  }
+  .mmd-hamburger-menu::before {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .mmd-hamburger-menu::after {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  .mmd-nav-links .mmd-nav-item {
+    font-size: 2em;
+  }
+  .mmd-nav-email {
+    font-size: 0.8em;
+    bottom: 20px;
+  }
+
+  .mmd-hero-title {
+    font-size: 2.5em;
+  }
+  .mmd-hero-subtitle {
+    font-size: 1.4em;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .mmd-dynamic-text-border {
+    min-width: 110px;
+    height: auto;
+    font-size: 1em;
+    padding: 6px 10px;
+  }
+  .mmd-hero-brand-name {
+    font-size: 1em;
+  }
+  .mmd-hero-decorative-lines {
+    width: 120px;
+    margin-bottom: 25px;
+  }
+  .mmd-scroll-down-img {
+    width: 50px;
+  }
+  .mmd-scroll-down-btn {
+    bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mmd-header-main {
+    padding: 12px 3%; /* Keep consistent padding */
+  }
+  .mmd-header-logo-img {
+    height: 35px;
+  }
+  .mmd-reach-out-btn {
+    display: none; /* Hide button on smallest screens, only use hamburger */
+  }
+  /* Hamburger dimensions for smallest screens */
+  .mmd-hamburger-menu {
+    width: 25px;
+    height: 14px;
+  }
+  .mmd-hamburger-menu.is-active::before {
+    transform: translateY(5.5px) rotate(45deg);
+  }
+  .mmd-hamburger-menu.is-active::after {
+    transform: translateY(-5.5px) rotate(-45deg);
+  }
+
+  .mmd-nav-links li {
+    margin: 18px 0;
+  }
+  .mmd-nav-links .mmd-nav-item {
+    font-size: 1.5em;
+  }
+  .mmd-nav-email {
+    font-size: 0.7em;
+    bottom: 20px;
+  }
+
+  .mmd-hero-title {
+    font-size: 1.8em;
+  }
+  .mmd-hero-subtitle {
+    font-size: 1em;
+  }
+  .mmd-dynamic-text-border {
+    min-width: 80px;
+    padding: 5px 8px;
+    font-size: 0.9em;
+  }
+  .mmd-hero-brand-name {
+    font-size: 0.9em;
+  }
+  .mmd-hero-decorative-lines {
+    width: 100px;
+    margin-bottom: 20px;
+  }
+  .mmd-scroll-down-img {
+    width: 40px;
+  }
+  .mmd-scroll-down-btn {
+    bottom: 20px;
+  }
+}
+
+
+/* ======================== ABOUT SECTION ======================== */
+.mmd-about-section {
+  background-color: var(--color-black);
+  padding-bottom: 80px; /* Space at the bottom */
+  overflow: hidden; /* Hides the scrolling logos when they go off screen */
+  position: relative;
+  z-index: 5; /* Ensures it sits above any background elements */
+}
+
+/* --- Infinite Logo Slider --- */
+.mmd-logo-slider {
+  width: 100%;
+  padding: 40px 0; /* Space above and below the logos */
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.mmd-logo-track {
+  display: flex;
+  width: max-content; /* Allows the track to be as wide as the images */
+  /* This animation moves the track to the left infinitely */
+  animation: mmdLogoScroll 20s linear infinite; 
+}
+
+.mmd-logo-track img {
+  height: 60px; /* Adjust this height based on your image size */
+  width: auto;
+  margin-right: 0; /* Ensures seamless connection if image has no built-in gap */
+  display: block;
+}
+
+@keyframes mmdLogoScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Moves exactly half way (width of 1 image) then resets */
+}
+
+/* --- About Content --- */
+.mmd-about-content {
+  max-width: 900px;
+  margin: 0 auto; /* Centers the container */
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns text to the left */
+}
+
+/* Title with the Blue Dot */
+.mmd-about-title {
+font-family: 'Think', sans-serif;
+    font-size: 80px;
+    color: var(--color-white);
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* The Blue Dot using CSS */
+.mmd-about-title::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-blue);
+  border-radius: 50%; /* Makes it a circle */
+}
+
+.mmd-about-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    color: #7ABEE1;
+    margin-bottom: 40px;
+}
+
+/* --- "READ MORE" Button Styling --- */
+/* This class handles the specific shape you asked for */
+.mmd-btn-custom {
+  background-color: var(--color-blue);
+  color: var(--color-black);
+  text-decoration: none;
+  font-family: "FSP DEMO - Integral CF Heavy", sans-serif;
+  font-size: 0.9em;
+  
+  /* SPECIFIC PADDING AND BORDER RADIUS REQUESTED */
+  padding: 16px 32px;
+  border-radius: 8px 24px;
+  
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.mmd-btn-custom span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Shared Arrow Animation Class (reused from header) */
+.mmd-btn-arrow {
+  height: 12px;
+  width: auto;
+  transition: transform 0.05s ease-out;
+}
+
+/* Hover Effects handled by CSS (Bg Color) */
+.mmd-btn-custom:hover {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+
+/* Arrow Animation Keyframes (same as before) */
+@keyframes mmdArrowShoot {
+  0% { transform: translateX(0px); }
+  50% { transform: translateX(10px); }
+  100% { transform: translateX(0px); }
+}
+
+/* Helper class added by JS */
+.animate-arrow-forward {
+  animation: mmdArrowShoot 0.4s forwards;
+}
+
+/* Mobile Responsiveness for About Section */
+@media (max-width: 768px) {
+  .mmd-about-title { font-size: 2em; }
+  .mmd-about-text { font-size: 1em; }
+  .mmd-logo-track img { height: 40px; }
+}
+
+
+/* ======================== SELECTED WORK SECTION ======================== */
+.mmd-work-section {
+  background-color: var(--color-black);
+  padding: 60px 5% 100px 5%; /* Top, Right, Bottom, Left */
+  position: relative;
+  z-index: 5;
+}
+
+/* Reusing the Title Style from About Section, but renamed for general use */
+.mmd-section-title {
+  font-family: 'Think', sans-serif;
+  font-size: 7em;
+  color: var(--color-white);
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+}
+
+
+/* --- Grid Layout --- */
+.mmd-work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 60px 40px; /* 60px vertical gap, 40px horizontal gap */
+  margin-bottom: 80px;
+}
+
+/* --- Project Card --- */
+.mmd-project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Image Wrapper (The Frame) */
+.mmd-img-wrapper {
+width: 100%;
+    height: 500px;
+    border-radius: 64px 16px;
+    overflow: hidden;
+    position: relative;
+    background-color: #222;
+}
+
+/* The Image itself */
+.mmd-project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fills the box without stretching */
+  transition: transform 0.6s ease; /* Smooth zoom effect */
+}
+
+/* Hover Effect: Zoom Image */
+.mmd-img-wrapper:hover .mmd-project-img {
+  transform: scale(1.08); /* Zooms in slightly */
+}
+
+/* --- The Blue Slide-up Overlay --- */
+.mmd-project-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background-color: var(--color-blue);
+  padding: 20px 30px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Animation Setup */
+  transform: translateY(101%); /* Start hidden (pushed down 100%) */
+  transition: transform 0.4s ease-in-out; /* Smooth slide */
+}
+
+/* Hover Effect: Slide up Overlay */
+.mmd-img-wrapper:hover .mmd-project-overlay {
+  transform: translateY(0); /* Slide to original position */
+}
+
+/* Overlay Text Styles */
+.mmd-overlay-title {
+font-family: 'Think', sans-serif;
+    color: var(--color-black);
+    margin: 0;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+.mmd-overlay-desc {
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-black);
+  margin: 5px 0 0 0;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+/* --- Link Button Styling (White Pill Button) --- */
+.mmd-project-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-white);
+    width: 104px;
+    height: 72px;
+    border-radius: 40px 20px;
+    transition: transform 0.3s 
+ease, box-shadow 0.3s 
+ease;
+}
+
+/* The Icon inside the button */
+.mmd-project-link img {
+  width: 32px; /* Adjust icon size to fit inside the button */
+  height: auto;
+  display: block;
+}
+
+/* Hover Effect for the button */
+.mmd-project-link:hover {
+  transform: scale(1.1); /* Grows slightly */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Shadow grows */
+  cursor: pointer;
+}
+
+/* --- Bottom Info (Below Image) --- */
+.mmd-project-info {
+display: flex;
+    justify-content: space-between;
+    font-family: 'Think', sans-serif;
+    color: var(--color-white);
+    font-size: 3em;
+    padding: 0 10px;
+}
+
+.mmd-project-date {
+display: flex;
+    justify-content: space-between;
+    font-family: 'Think', sans-serif;
+    color: var(--color-white);
+    font-size: 0.5em;
+    padding: 0 10px;
+        align-items: center;
+}
+
+/* --- View More Button (Outline Style) --- */
+.mmd-view-more-container {
+  display: flex;
+  justify-content: flex-end; /* Aligns button to the right */
+}
+
+.mmd-view-more-btn {
+  background-color: transparent; /* No fill initially */
+  border: 2px solid var(--color-blue); /* Blue Border */
+  color: var(--color-white);
+  text-decoration: none;
+  font-family: "FSP DEMO - Integral CF Heavy", sans-serif;
+  font-size: 0.9em;
+  padding: 16px 32px;
+    border-radius: 8px 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+}
+
+.mmd-view-more-btn:hover {
+  background-color: var(--color-white); /* Fill white on hover */
+  border-color: var(--color-white);
+  color: var(--color-black); /* Text turns black */
+}
+
+/* Important: When button turns white, the arrow needs to be black */
+.mmd-view-more-btn:hover .mmd-btn-arrow {
+  filter: brightness(0); /* Turns the white arrow image to black */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .mmd-work-grid {
+    grid-template-columns: 1fr; /* Stack projects 1 column */
+  }
+  .mmd-section-title {
+    font-size: 2.5em;
+  }
+  .mmd-img-wrapper {
+    height: 300px;
+  }
+}
+
+
+/* ======================== PROOF SECTION ======================== */
+.mmd-proof-section {
+  background-color: var(--color-black);
+  padding: 80px 5%;
+  color: var(--color-white);
+}
+
+.mmd-proof-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.mmd-proof-title {
+font-family: 'Think', sans-serif;
+    font-size: 7em;
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.mmd-text-blue { color: var(--color-blue); }
+
+.mmd-proof-desc {
+  font-family: 'Poppins', sans-serif;
+  text-align: right;
+  font-size: 1.1em;
+  color: #888;
+  margin: 0;
+  max-width: 400px;
+}
+
+/* --- Content Grid --- */
+.mmd-proof-content {
+  display: flex;
+  gap: 30px;
+  height: 450px;
+}
+
+/* Left Column: Stats */
+.mmd-stats-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mmd-stat-card {
+  background-color: #1f1f1f;
+  flex: 1;
+  border-radius: 30px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  /* Smooth Color Transition */
+  transition: background-color 0.5s ease;
+}
+
+/* Active/Hover State */
+.mmd-stat-card.active,
+.mmd-stat-card:hover {
+  background-color: #2a2a2a; /* Lighter grey */
+}
+
+.mmd-stat-number {
+  font-family: 'Think', sans-serif;
+  font-size: 5em;
+  margin: 0;
+  line-height: 1;
+}
+
+.mmd-stat-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2em;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #eeeeee;
+}
+
+/* Right Column: Image Display */
+.mmd-proof-display {
+  flex: 1.5;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative; /* Crucial for absolute positioning inside */
+  background-color: #111; /* Fallback color */
+}
+
+/* Images: Stacked on top of each other */
+.mmd-proof-img {
+  position: absolute; /* Stacks them */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0; /* Hidden by default */
+  /* Smooth Cross-fade Transition */
+  transition: opacity 0.6s ease-in-out;
+}
+
+/* Class to show the image */
+.mmd-proof-img.visible {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* --- Centered Button Animation --- */
+.mmd-proof-btn-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10; /* Ensure it is above the images */
+  
+  /* Initial State: Hidden, slightly lower than center */
+  transform: translate(-50%, 50%); 
+  opacity: 0;
+  
+  /* Smooth Slide Up Transition */
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* On Hover of the WHOLE content section, slide button to dead center */
+.mmd-proof-content:hover .mmd-proof-btn-wrapper {
+  transform: translate(-50%, -50%); /* Moves to exact center */
+  opacity: 1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .mmd-proof-header, .mmd-proof-content { flex-direction: column; }
+  .mmd-proof-content { height: auto; }
+  .mmd-stats-container { flex-direction: row; }
+  .mmd-proof-display { height: 350px; }
+  .mmd-proof-desc { text-align: left; }
+}
+
+@media (max-width: 600px) {
+  .mmd-stats-container { flex-direction: column; }
+}
+
+
+/* ======================== BRAND BREAKER SECTION ======================== */
+.mmd-brand-breaker {
+  background-color: var(--color-black);
+  padding: 100px 0;
+  text-align: center;
+}
+
+.mmd-breaker-text {
+font-family: 'Think', sans-serif;
+    font-size: 7em;
+    line-height: 0.9;
+    color: var(--color-white);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* ======================== SERVICES SECTION (REVISED) ======================== */
+.mmd-services-section {
+  background-color: var(--color-black);
+  padding: 50px 5% 100px 5%;
+}
+
+.mmd-services-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 80px;
+}
+
+/* --- Main Card Container --- */
+.mmd-service-card {
+  display: flex; /* Creates the Row Layout */
+  align-items: flex-start; /* Aligns items to top */
+  padding: 40px 0;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  min-height: 120px; /* Minimum height for closed state */
+}
+
+/* 1. Number Column */
+.mmd-num-col {
+  width: 80px; /* Fixed width */
+  flex-shrink: 0;
+}
+
+.mmd-num-text {
+  font-family: 'Think', sans-serif;
+  font-size: 2em; /* Default size */
+  color: var(--color-white);
+  transition: font-size 0.4s ease;
+}
+
+/* 2. Content Column (Middle) */
+.mmd-content-col {
+  flex: 1; /* Takes up all remaining space */
+  display: flex;
+  align-items: flex-start; /* Align Image and Text to top */
+  overflow: hidden; /* Important for animation */
+}
+
+/* Image Container (Expands width on Open) */
+.mmd-img-container {
+  width: 0; /* Hidden by default */
+  opacity: 0;
+  overflow: hidden;
+  margin-right: 0;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth expansion */
+  flex-shrink: 0; /* Don't squash image */
+}
+
+.mmd-svc-img {
+  width: 300px; /* Fixed width of actual image */
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px 48px;
+}
+
+/* Text Wrapper */
+.mmd-text-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center title when closed */
+  min-height: 50px; /* Ensure space for title */
+  transition: all 0.4s ease;
+}
+
+/* The Title */
+.mmd-svc-title {
+  font-family: 'Think', sans-serif;
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-size: 1.5em; /* Smaller closed size */
+  margin: 0;
+  text-align: center; /* Centered when closed */
+  white-space: nowrap; /* Keep on one line when closed */
+  transition: all 0.5s ease;
+  transform-origin: left center;
+}
+
+/* The Details (Desc + Tags) */
+.mmd-svc-details {
+  max-height: 0; /* Hidden vertically */
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.6s ease;
+}
+
+.mmd-svc-desc {
+  font-family: 'Poppins', sans-serif;
+  color: #ccc;
+  font-size: 0.9em;
+  margin-top: 20px;
+  max-width: 450px;
+  line-height: 1.6;
+}
+
+.mmd-tags-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.mmd-tag {
+  border: 1px solid #555;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75em;
+  color: var(--color-white);
+}
+
+/* 3. Icon Column (Right) */
+.mmd-icon-col {
+  width: 60px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* The Circle Button Style */
+.mmd-icon-btn {
+  background: transparent;
+  border: 1px solid var(--color-white); /* White border */
+  border-radius: 50%; /* Circle */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.mmd-toggle-icon {
+  width: 14px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+/* ================== ACTIVE (OPEN) STATE ================== */
+
+/* 1. Image Expands & Moves Right */
+.mmd-service-card.active .mmd-img-container {
+  width: 300px; /* Reveal Image */
+  opacity: 1;
+  margin-right: 40px; /* Space between Image and Text */
+}
+
+/* 2. Text Wrapper Re-aligns */
+.mmd-service-card.active .mmd-text-wrapper {
+  justify-content: flex-start; /* Align top */
+}
+
+/* 3. Title Grows & Aligns Left */
+.mmd-service-card.active .mmd-svc-title {
+  text-align: left; /* Left align */
+  font-size: 3em; /* Big Font */
+  white-space: normal; /* Allow wrapping */
+  line-height: 0.9;
+}
+
+/* 4. Details Slide Down */
+.mmd-service-card.active .mmd-svc-details {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* 5. Button Fills Blue & Rotates Icon */
+.mmd-service-card.active .mmd-icon-btn {
+  background-color: var(--color-blue);
+  border-color: var(--color-blue);
+}
+
+/* Button Hover State (Even when closed) */
+.mmd-service-card:hover .mmd-icon-btn {
+  border-color: var(--color-blue); /* Just hint blue on hover */
+}
+
+/* Mobile Adjustments */
+@media (max-width: 900px) {
+  .mmd-service-card.active { flex-direction: column; }
+  .mmd-content-col { flex-direction: column; width: 100%; }
+  .mmd-img-container { margin-bottom: 20px; }
+  .mmd-icon-col { position: absolute; right: 5%; margin-top: 10px; }
+  .mmd-svc-title { font-size: 1.2em; }
+  .mmd-service-card.active .mmd-svc-title { font-size: 2em; }
+}
+
+
+
+/* ======================== PROCESS SECTION (MASKING EFFECT) ======================== */
+.mmd-process-scroll-zone {
+  height: 400vh; /* Scroll distance */
+  background-color: var(--color-black);
+  position: relative;
+}
+
+.mmd-sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.mmd-process-layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  position: relative;
+  /* NO Padding on Left, so title hits the edge */
+  padding-left: 0; 
+  padding-right: 5%;
+}
+
+
+
+/* --- Left Column: The "Mask" (Title) --- */
+.mmd-process-title-col {
+width: 500px;
+    min-height: 600px;
+    background-color: var(--color-black);
+    z-index: 20;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.mmd-process-title {
+  font-family: 'Think', sans-serif;
+  font-size: 5em;
+  line-height: 0.9;
+  color: var(--color-white);
+  text-transform: uppercase;
+  margin: 0;
+  position: relative;
+  z-index: 21; /* Text sits on top of the black block */
+}
+
+/* --- Right Column: The Moving Track --- */
+.mmd-cards-track {
+  display: flex;
+  gap: 16px;
+  transform: translateX(0); 
+  will-change: transform;
+  
+  /* Layering - BEHIND the Title */
+  z-index: 1; 
+  position: relative;
+  
+  /* Initial Position */
+  padding-left: 50px; 
+}
+
+/* --- The Cards --- */
+.mmd-process-card {
+  flex: 0 0 350px;
+  height: 450px; /* SHORTER than the Title Panel (600px) */
+  border: 1px solid #333;
+  border-radius: 30px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #111;
+  user-select: none;
+}
+
+.mmd-step-num {
+  font-family: 'Think', sans-serif;
+  color: var(--color-white);
+  font-size: 2em;
+  letter-spacing: 1px;
+}
+
+.mmd-card-title {
+  font-family: 'Think', sans-serif;
+  color: var(--color-white);
+  font-size: 5em;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.mmd-card-desc {
+  font-family: 'Poppins', sans-serif;
+  color: #aaa;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mmd-process-title-col { width: 400px; min-height: 550px; }
+  .mmd-process-title { font-size: 3.5em; }
+}
+
+@media (max-width: 768px) {
+  /* Reset for Mobile */
+  .mmd-process-scroll-zone { height: auto; }
+  .mmd-sticky-container { position: relative; height: auto; overflow: visible; }
+  .mmd-process-layout { flex-direction: column; padding: 50px 5%; }
+  .mmd-process-title-col { 
+    width: 100%; 
+    min-height: auto; 
+    padding: 0; 
+    margin-bottom: 40px; 
+    box-shadow: none;
+  }
+  .mmd-cards-track { 
+    z-index: 2; /* Bring to front on mobile */
+    overflow-x: auto; 
+    width: 100%; 
+    padding-left: 0;
+    gap: 20px;
+  }
+  .mmd-process-card { height: 400px; }
+}
+
+/* ======================== CONTACT SECTION ======================== */
+.mmd-contact-section {
+  background-color: var(--color-black);
+  padding: 100px 5%;
+  color: var(--color-white);
+}
+
+.mmd-contact-container {
+  max-width: 1200px;
+  margin: 0 auto; /* Center the whole section */
+  display: flex;
+  flex-wrap: wrap; /* Allows stacking on mobile */
+  gap: 80px; /* Space between Left text and Right form */
+  align-items: flex-start;
+}
+
+
+/* Status Message Styling */
+.mmd-form-status {
+  margin-top: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9em;
+  height: 20px; /* Reserve space */
+  color: transparent; /* Hidden initially */
+  transition: color 0.3s ease;
+}
+
+.mmd-form-status.success {
+  color: #4CAF50; /* Green for success */
+}
+
+.mmd-form-status.error {
+  color: #f44336; /* Red for error */
+}
+
+/* Ensure textarea doesn't have a scrollbar when JS resizes it */
+.mmd-textarea {
+  overflow: hidden; 
+}
+
+/* --- Left Column --- */
+.mmd-contact-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.mmd-contact-title {
+    font-family: 'Think', sans-serif;
+    font-size: 7em;
+    line-height: 0.9;
+    text-transform: uppercase;
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 48px;
+}
+
+.mmd-contact-desc {
+  font-family: 'Poppins', sans-serif;
+  color: #888;
+  font-size: 1.1em;
+  line-height: 1.6;
+  max-width: 400px;
+  margin-bottom: 60px;
+}
+
+/* Profile Block */
+.mmd-profile-block {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.mmd-pfp-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #333;
+}
+
+.mmd-profile-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.mmd-profile-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2em;
+  color: var(--color-white);
+}
+
+.mmd-profile-role {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8em;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+/* --- Right Column: Form --- */
+.mmd-contact-form-wrapper {
+  flex: 1;
+  min-width: 300px;
+  padding-top: 20px;
+}
+
+.mmd-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Space between inputs */
+}
+
+/* Input Styles */
+.mmd-input-group {
+  position: relative; /* Needed for the animation line */
+  width: 100%;
+}
+
+.mmd-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #444; /* Grey default line */
+  padding: 15px 0;
+  color: var(--color-white);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1em;
+  letter-spacing: 1px;
+  outline: none; /* Remove default blue glow */
+  resize: none; /* For textarea */
+}
+
+/* Change placeholder color */
+.mmd-input::placeholder {
+  color: #666;
+  text-transform: uppercase;
+}
+
+/* The Animated Line (Modern Trend) */
+.mmd-focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0; /* Start width 0 */
+  height: 2px;
+  background-color: var(--color-blue);
+  transition: width 0.4s ease; /* Smooth animation */
+}
+
+/* Trigger Animation on Focus */
+.mmd-input:focus ~ .mmd-focus-border {
+  width: 100%; /* Expand to full width */
+}
+
+/* Button Alignment */
+.mmd-form-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start; /* Align left */
+}
+
+/* Use specific button styling for Contact to match image (Blue background) */
+.mmd-contact-btn {
+  /* Reusing mmd-btn-custom but ensuring blue bg */
+  background-color: var(--color-blue);
+  color: var(--color-black);
+  border: none;
+  cursor: pointer;
+  /* Ensure exact padding from previous request */
+  padding: 16px 32px;
+  border-radius: 8px 24px;
+}
+
+/* Ensure Arrow Animation works on this button */
+.mmd-contact-btn .mmd-btn-arrow {
+  filter: none; /* Keep arrow black */
+}
+
+.mmd-contact-btn:hover {
+  background-color: var(--color-white);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mmd-contact-container {
+    flex-direction: column;
+    gap: 50px;
+  }
+  .mmd-contact-title {
+    font-size: 3em;
+  }
+}
+
+
+/* ======================== WORK SAMPLES SECTION ======================== */
+.mmd-samples-section {
+  background-color: var(--color-black);
+  padding: 50px 5% 100px 5%;
+}
+
+.mmd-samples-grid {
+  display: grid;
+  /* 4 Columns on large screens */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 30px;
+}
+
+/* --- The Card Container --- */
+.mmd-sample-card {
+  position: relative; /* Anchor for absolute elements */
+  display: block;
+  border-radius: 30px;
+  cursor: pointer;
+  /* Keep aspect ratio consistent (Square-ish) */
+  aspect-ratio: 1 / 1; 
+  text-decoration: none; /* Remove link underline */
+}
+
+/* 1. The Blue Background (Hidden behind initially) */
+.mmd-sample-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 99%;
+    height: 98%;
+    background-color: var(--color-blue);
+    border-radius: 72px 24px;
+    z-index: 1;
+    transition: transform 0.4s 
+cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 2. The Main Image */
+.mmd-sample-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+}
+
+/* 3. The Hover Overlay (Contains Icon + Name) */
+.mmd-sample-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3; /* Top Layer */
+  border-radius: 30px;
+  
+  /* Flexbox to position items */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertical */
+  align-items: center;     /* Center horizontal */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* --- Animations & Elements --- */
+
+/* The Name Pill */
+.mmd-sample-name {
+  position: absolute;
+  bottom: 20px; /* Position at bottom */
+  width: 80%;
+  background-color: #7ABEE1; /* Blue color */
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 20px;
+  
+  font-family: 'Think', sans-serif;
+  color: var(--color-black);
+  font-size: 1.2em;
+  text-transform: uppercase;
+  
+  /* Animation Start State */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease 0.1s; /* 0.1s delay */
+}
+
+/* The Behance Icon Circle */
+.mmd-icon-circle {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* Animation Start State */
+  opacity: 0;
+  transform: translateY(30px) rotate(0deg);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy transition */
+}
+
+.mmd-behance-icon {
+    width: 48px;
+    height: auto;
+}
+
+/* --- HOVER EFFECTS --- */
+
+/* 1. Slide out Blue BG */
+.mmd-sample-card:hover .mmd-sample-bg {
+  transform: translate(15px, 15px); /* Moves down and right */
+}
+
+/* 2. Slide Up Name */
+.mmd-sample-card:hover .mmd-sample-name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3. Slide Up & Spin Icon */
+.mmd-sample-card:hover .mmd-icon-circle {
+  opacity: 1;
+  transform: translateY(0) rotate(360deg); /* Full spin */
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .mmd-samples-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 Columns on Tablet */
+  }
+}
+
+@media (max-width: 600px) {
+  .mmd-samples-grid {
+    grid-template-columns: 1fr; /* 1 Column on Phone */
+    gap: 40px;
+  }
+  .mmd-sample-card:hover .mmd-sample-bg {
+    transform: translate(10px, 10px); /* Smaller movement on mobile */
+  }
+}
+
+
+/* ======================== FOOTER SECTION (CARD STYLE) ======================== */
+.mmd-footer {
+  width: 100%;
+  color: var(--color-white);
+  padding-bottom: 40px; /* Space at very bottom of page */
+  box-sizing: border-box;
+}
+
+/* --- Top Section (Dark Card) --- */
+.mmd-footer-top {
+  background-color: var(--color-black);
+  background-image: url('assets/footerbg.png');
+  background-size: cover;
+  background-position: center;
+  
+  /* CARD STYLING */
+  margin: 0 40px 20px 40px; /* Left/Right margins make it smaller than screen */
+  border-radius: 40px; /* Rounded Corners */
+  padding: 60px 60px 30px 60px; /* Padding inside the card */
+  
+  display: flex;
+  flex-direction: column;
+}
+
+/* The Grid Layout */
+.mmd-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1.5fr; /* 4 Columns */
+  gap: 40px;
+  width: 100%;
+  margin-bottom: 60px; /* Space between links and copyright */
+}
+
+/* Headings */
+.mmd-footer-heading {
+    font-family: 'Think', sans-serif;
+    color: #7ABEE1;
+    font-size: 2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+/* Links Lists */
+.mmd-footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mmd-footer-list li { margin-bottom: 15px; }
+
+.mmd-footer-list a {
+  text-decoration: none;
+  color: #ccc;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1em;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mmd-footer-list a:hover { color: var(--color-white); }
+
+/* Arrow Links */
+.mmd-arrow-link img {
+  width: 12px;
+  height: auto;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.mmd-arrow-link:hover img {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Contact Column */
+.mmd-col-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.mmd-footer-cta { margin-bottom: 20px; }
+
+.mmd-footer-btn {
+background-color: var(--color-blue);
+    color: var(--color-black);
+    text-decoration: none;
+    font-family: "FSP DEMO - Integral CF Heavy";
+    font-size: 0.9em;
+    padding: 16px 32px;
+    border-radius: 8px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s 
+ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+
+.mmd-footer-desc {
+  font-family: 'Poppins', sans-serif;
+  color: #888;
+  font-size: 0.9em;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  max-width: 350px;
+}
+
+.mmd-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.mmd-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: 'Think', sans-serif;
+  color: #7ABEE1;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+
+.mmd-detail-item img { width: 20px; height: auto; }
+
+/* Copyright (Now inside the top card) */
+.mmd-copyright {
+  border-top: 1px solid #333; /* Line separator */
+  padding-top: 30px;
+  color: #666;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8em;
+}
+
+/* --- Bottom Section (Blue Card) --- */
+.mmd-footer-bottom {
+  background-color: #7ABEE1;
+  
+  /* CARD STYLING */
+  margin: 0 40px; /* Align with top card */
+  border-radius: 40px;
+  padding: 30px 60px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mmd-big-mark {
+  height: 140px;
+  width: auto;
+}
+
+.mmd-bottom-text-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 0.85;
+}
+
+/* Solid Text Styling (No Outline) */
+.mmd-stack-text {
+  font-family: 'Think', sans-serif;
+  font-size: 4em;
+  text-transform: uppercase;
+  color: var(--color-white); /* Solid White */
+  /* Optional: slight opacity if you want it to blend like the design */
+  opacity: 0.9; 
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mmd-footer-grid { grid-template-columns: 1fr 1fr; }
+  .mmd-col-contact { grid-column: span 2; align-items: flex-start; text-align: left; }
+  .mmd-footer-heading { text-align: left !important; }
+  .mmd-contact-details { align-items: flex-start; }
+}
+
+@media (max-width: 768px) {
+  .mmd-footer-top, .mmd-footer-bottom { margin: 0 15px; padding: 30px; }
+  .mmd-footer-grid { grid-template-columns: 1fr; }
+  .mmd-col-contact { grid-column: span 1; }
+  .mmd-footer-bottom { flex-direction: column; gap: 30px; padding: 40px 20px; }
+  .mmd-stack-text { font-size: 3em; }
+  .mmd-big-mark { height: 100px; }
+}
+
+
+/* ======================== HOME ENDS WORK STARTS ======================== */
+
+
+/* ======================== LETS WORK TOGETHER SECTION ======================== */
+.mmd-lets-work-section {
+  background-color: var(--color-black);
+  padding: 100px 5%;
+  color: var(--color-white);
+}
+
+.mmd-lets-work-container {
+  max-width: 1200px; /* Keeps content from getting too wide on huge screens */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* Pushes text left, image right */
+  align-items: center; /* Vertically centers them */
+  gap: 50px; /* Space between text and image */
+}
+
+/* --- Left Column: Text --- */
+.mmd-work-text-col {
+  flex: 1; /* Takes up available space */
+  max-width: 500px; /* Prevents text from stretching too far */
+}
+
+.mmd-work-title {
+  font-family: 'Think', sans-serif;
+  font-size: 7em; /* Very Large */
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.mmd-work-desc {
+  font-family: 'Poppins', sans-serif;
+  color: #888; /* Grey text */
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 50px; /* Space before button */
+  max-width: 400px;
+}
+
+/* --- Right Column: Image --- */
+.mmd-work-img-col {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* Aligns image to the right */
+}
+
+.mmd-work-img {
+  width: 100%;
+  max-width: 550px; /* Limits max size of image */
+  height: auto;
+  border-radius: 40px; /* Matches your Figma rounded corners */
+  object-fit: cover;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+  .mmd-lets-work-container {
+    flex-direction: column-reverse; /* Stack them: Image Top, Text Bottom? Or Standard? */
+    /* Usually Contact sections look better Text Top on mobile, let's keep standard column */
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+  
+  .mmd-work-img-col {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 40px;
+  }
+  
+  .mmd-work-title {
+    font-size: 3.5em;
+  }
+}
+
+
+/* ======================== ABOUT PAGE STYLES ======================== */
+.mmd-about-page {
+  background-color: var(--color-black);
+  padding: 120px 5% 80px 5%; /* Top padding accounts for fixed header */
+  color: var(--color-white);
+  overflow: hidden; /* Prevents spinning elements from creating scrollbars */
+}
+
+/* --- Top Row Layout --- */
+.mmd-about-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  margin-bottom: 100px;
+  flex-wrap: wrap;
+}
+
+/* --- The Visual Stack (Left Side) --- */
+.mmd-visual-stack {
+  position: relative;
+  width: 400px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 1. Background Lines (Spinning) */
+.mmd-bg-lines {
+  position: absolute;
+  width: 140%; /* Larger than the photo */
+  height: auto;
+  z-index: 1;
+  opacity: 0.6;
+  animation: mmdSpin 20s linear infinite; /* Smooth Loop Animation */
+}
+
+/* 2. Main Portrait (Arch Shape) */
+.mmd-portrait {
+position: relative;
+    width: 400px;
+    height: 510px;
+    object-fit: cover;
+    z-index: 3;
+}
+
+
+
+/* The actual text ring letters will be styled by JS, 
+   but we set the font here */
+.mmd-text-ring span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  font-family: 'Think', sans-serif;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  transform-origin: 0 220px; /* Radius of the circle text */
+}
+
+/* --- Text Content (Right Side) --- */
+.mmd-about-intro {
+  flex: 1;
+  max-width: 500px;
+}
+
+
+.mmd-body-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.blue-highlight {
+  color: #7ABEE1; /* Blue text for the intro paragraph */
+}
+
+/* --- Bottom Row Layout --- */
+.mmd-about-bottom-row {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mmd-text-block {
+  margin-left: 20px; /* Indent slightly */
+  border-left: 2px solid #333; /* Optional decoration line */
+  padding-left: 30px;
+}
+
+/* --- Animations --- */
+@keyframes mmdSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes mmdSpinReverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .mmd-about-top-row {
+    flex-direction: column;
+    text-align: center;
+  }
+  .mmd-visual-stack {
+    margin-bottom: 50px;
+    transform: scale(0.9); /* Shrink slightly on mobile */
+  }
+  .mmd-text-block {
+    margin-left: 0;
+    border: none;
+    padding-left: 0;
+  }
+}
+
+
+/* ======================== TEXT SECTIONS (Experience & Story) ======================== */
+
+.mmd-text-section {
+  max-width: 900px;
+  margin: 80px auto; /* 80px space top/bottom, centered horizontally */
+  padding-left: 20px; /* Slight indent to align nicely */
+}
+
+/* The Title with the Blue Dot on the Left */
+.mmd-bullet-title {
+  font-family: 'Think', sans-serif;
+  font-size: 3em;
+  color: var(--color-white);
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  
+  /* Flexbox to align the dot and text */
+  display: flex; 
+  align-items: center;
+  gap: 15px; /* Space between dot and text */
+}
+
+/* Creating the Blue Dot */
+.mmd-bullet-title::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: #7ABEE1; /* Your Blue Color */
+  border-radius: 50%; /* Makes it a circle */
+  margin-top: 5px; /* Visual adjustment to center it with the font */
+}
+
+/* Re-using your body text style, but ensuring spacing between paragraphs */
+.mmd-content-block p {
+  margin-bottom: 30px; /* Space between paragraphs */
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .mmd-text-section {
+    margin: 50px auto;
+    padding-left: 0;
+  }
+  
+  .mmd-bullet-title {
+    font-size: 2em;
+  }
+}
+
+
+/* ======================== 404 PAGE STYLING (REVISED) ======================== */
+
+.mmd-404-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-black);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5%;
+    box-sizing: border-box;
+    border-radius: 32px;
+}
+
+/* --- Background Image --- */
+.mmd-404-bg {
+position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    z-index: 0;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.mmd-404-bg img {
+  width: 100%;
+  display: block;
+}
+
+/* --- Massive Text Stack --- */
+.mmd-404-text-container {
+  position: relative;
+  z-index: 1; /* On top of image */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 80px; /* Push it up slightly from the bottom bar */
+}
+
+/* Using VW units makes it huge and responsive like your design */
+.mmd-404-line1 {
+  font-family: 'Think', sans-serif;
+  font-size: 14vw; /* Massive size relative to screen width */
+  line-height: 0.8;
+  color: var(--color-white);
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -2px; /* Tighten letters */
+}
+
+.mmd-404-line2 {
+  font-family: 'Think', sans-serif;
+  font-size: 14vw;
+  line-height: 0.8;
+  color: var(--color-white);
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: -2px;
+}
+
+.mmd-404-code {
+  font-family: 'Think', sans-serif;
+  font-size: 6vw; /* Smaller than title, but still big */
+  color: #7ABEE1; /* Blue */
+  margin: 10px 0 0 0;
+}
+
+/* --- Bottom Footer Bar --- */
+.mmd-404-bottom-bar {
+  position: absolute;
+  bottom: 60px; /* Space from bottom edge */
+  left: 5%;
+  right: 5%;
+  z-index: 10;
+  
+  display: flex;
+  justify-content: space-between; /* Text Left, Button Right */
+  align-items: flex-end; /* Align to bottom */
+}
+
+.mmd-404-msg {
+  font-family: 'Poppins', sans-serif;
+  color: #7ABEE1; /* Blue text */
+  font-size: 1.1em;
+  line-height: 1.5;
+  max-width: 500px;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .mmd-404-line1, .mmd-404-line2 { font-size: 18vw; } /* Even bigger on mobile */
+  .mmd-404-code { font-size: 10vw; }
+  
+  .mmd-404-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    bottom: 40px;
+  }
+}
