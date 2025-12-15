@@ -22,6 +22,12 @@
 </head>
 <body>
 
+    <!-- ======================== TRANSITION OVERLAY ======================== -->
+<div class="mmd-transition-overlay" id="mmdTransitionOverlay">
+
+  <img src="assets/big_logo_mark.png" alt="Loading Logo" class="mmd-transition-logo">
+</div>
+
   <!-- ======================== HEADER ======================== -->
   <header class="mmd-header-main hidden-scroll">
     <a href="index.html" class="mmd-header-logo-link">
@@ -400,6 +406,53 @@
 
     });
   </script>
+
+  <!-- Page Transition -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+
+    setTimeout(() => {
+      document.body.classList.add('mmd-page-loaded');
+    }, 100); 
+
+
+    const links = document.querySelectorAll('a');
+
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        
+        const targetHref = this.getAttribute('href');
+
+
+        if (targetHref.startsWith('#') || 
+            targetHref.startsWith('mailto:') || 
+            targetHref.startsWith('tel:') || 
+            this.getAttribute('target') === '_blank') {
+          return;
+        }
+
+
+        e.preventDefault();
+
+        document.body.classList.remove('mmd-page-loaded');
+
+
+        setTimeout(() => {
+          window.location.href = targetHref;
+        }, 800); 
+
+      });
+    });
+  });
+
+
+  window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+      document.body.classList.add('mmd-page-loaded');
+    }
+  });
+</script>
 
 </body>
 </html>
